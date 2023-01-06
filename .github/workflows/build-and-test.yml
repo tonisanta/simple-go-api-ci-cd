@@ -1,0 +1,17 @@
+name: go-build-and-test
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19.x'
+      - name: Build
+        run: go build -v -o my-basic-api ./...
+      - name: Test with the Go CLI
+        run: go test ./...
