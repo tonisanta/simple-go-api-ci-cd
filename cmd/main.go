@@ -11,7 +11,7 @@ const Version = 2
 
 func main() {
 	http.HandleFunc("/hello", HelloHandler)
-	log.Println(http.ListenAndServe(":80", nil))
+	log.Println(http.ListenAndServe(":8080", nil))
 }
 
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
@@ -19,5 +19,12 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Fprintf(w, "Hello world, Version:%d, hostname:%s", Version, hostname)
+
+	defaultMsg := "Hello world"
+	value, set := os.LookupEnv("message")
+	if !set {
+		value = defaultMsg
+	}
+
+	fmt.Fprintf(w, "%s, Version:%d, hostname:%s", value, Version, hostname)
 }
