@@ -2,16 +2,22 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 )
 
-const version = 2
+const Version = 2
 
 func main() {
 	http.HandleFunc("/hello", HelloHandler)
-	http.ListenAndServe(":80", nil)
+	log.Println(http.ListenAndServe(":80", nil))
 }
 
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, world, version:%d!", version)
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Fprintf(w, "Hello world, Version:%d, hostname:%s", Version, hostname)
 }
