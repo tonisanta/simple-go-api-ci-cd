@@ -1,0 +1,5 @@
+name: "simple-go-api"
+deployment:
+  message: "Hello from values file"
+  image: "tonisanta/simple-go-api"
+
