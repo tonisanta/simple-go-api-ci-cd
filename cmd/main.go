@@ -10,6 +10,7 @@ import (
 const Version = 4
 
 func main() {
+	log.Printf("Hello from version: %d", Version)
 	http.HandleFunc("/hello", HelloHandler)
 	log.Println(http.ListenAndServe(":8080", nil))
 }
