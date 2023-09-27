@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const Version = 3
+const Version = 4
 
 func main() {
 	http.HandleFunc("/hello", HelloHandler)
