@@ -51,4 +51,4 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.ARGOCD_AUTOPILOT_TOKEN }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           https://api.github.com/repos/tonisanta/argocd-autopilot/actions/workflows/update-image.yaml/dispatches \
-          -d '{"ref":"main","inputs":{"project":"testing","docker-image": ${{ steps.meta.outputs.tags }}}}'
+          -d '{"ref":"main","inputs":{"project":"testing","docker-image": "${{ steps.meta.outputs.tags }}" }}'
