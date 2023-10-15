@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const Version = 5
+const Version = 6
 
 func main() {
 	log.Printf("Hello from version: %d", Version)
